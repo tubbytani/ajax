@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <div>
+         User Number<input  id='user_num'  type=’number’></input>
+         <div  id='user_data'>This is where the user data will be displayed</div>
+         <button  type="button"  onclick="loadUserData()">Update Content</button>
+      </div>
+      <script>
+         function  loadUserData() {
+             var  xhttp = new  XMLHttpRequest();
+             xhttp.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                     document.getElementById("user_data").innerHTML = xhttp.responseText;
+                 }
+             };
+             var  user_number=user_num.value;
+             xhttp.open("GET", "https://reqres.in/api/users/"+user_number, true);
+             xhttp.send();
+         }
+      </script>
+   </body>
+</html>
